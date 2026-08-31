@@ -12,7 +12,7 @@ export const collections: Collection[] = [
     story:
       "Noor began with a question our founder asked a cutter in the Gold Souk: how little metal can hold a diamond? The answer took two years. Every Noor setting is hand-raised in 18k white gold, then thinned by hand until the girdle of the stone sits open to the light on all sides. Worn against skin, the piece disappears and the stone stays.",
     cover: "/images/diamond-tennis-necklace.jpg",
-    portrait: "/images/diamond-necklace-skin.jpg",
+    portrait: "/images/gold-teardrop-model.jpg",
     still: "/images/emerald-cut-pendant.jpg",
     year: "2019",
   },
@@ -41,7 +41,7 @@ export const collections: Collection[] = [
     story:
       "Before oil, this coast lived on pearls. Boats left from Al Fahidi in April and returned in September, and the divers who came back rewrote what the Gulf could afford. Lulua is our thank-you note: every strand hand-knotted on silk, every clasp designed to be worn at the front as an ornament in its own right.",
     cover: "/images/pearl-strand-cream.jpg",
-    portrait: "/images/pearl-necklace-back.jpg",
+    portrait: "/images/pearls-black-top-bw.jpg",
     still: "/images/pearls-white-silk.jpg",
     year: "2020",
   },
@@ -54,7 +54,7 @@ export const collections: Collection[] = [
       "Our rarest stones — Colombian emerald, Kashmir-blue sapphire, fancy-cut diamonds — in pieces made in runs of ten or fewer.",
     story:
       "Mirage is where the house stops being a business and starts being a workshop. Stones are bought singly, at auction and from three dealers we have known for a decade. A piece takes between four and eleven months. When a Mirage design sells out it is retired, and the drawings go into the archive.",
-    cover: "/images/diamond-necklace-skin2.jpg",
+    cover: "/images/pearls-lace-portrait.jpg",
     portrait: "/images/emerald-diamond-necklace.jpg",
     still: "/images/gold-set-dark-plate.jpg",
     year: "2022",

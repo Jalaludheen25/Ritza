@@ -32,7 +32,7 @@ await page.screenshot({ path: `${OUT}/tryon-1-upload.png` });
 
 const input = await page.$('input[type=file]');
 if (!input) throw new Error('no file input found — modal did not open');
-await input.uploadFile('public/images/bare-shoulder-neck.jpg');
+await input.uploadFile('public/images/collar-open-shirt.jpg');
 
 await new Promise((r) => setTimeout(r, 900));
 await page.screenshot({ path: `${OUT}/tryon-2-processing.png` });

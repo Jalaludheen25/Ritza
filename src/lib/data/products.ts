@@ -365,7 +365,7 @@ export const products: Product[] = [
     images: [
       "/images/gold-earrings-stand.jpg",
       "/images/ear-earring-hand.jpg",
-      "/images/bw-model-earrings.jpg",
+      "/images/pearl-earrings-still.jpg",
     ],
     description:
       "Three articulated tiers that move independently, so the whole earring reads as liquid rather than as a fixed object.",
@@ -430,7 +430,7 @@ export const products: Product[] = [
     collection: "noor",
     price: 16200,
     images: [
-      "/images/bw-model-earrings.jpg",
+      "/images/hijab-gold-earrings.jpg",
       "/images/model-profile-earrings.jpg",
       "/images/ear-earring-hand.jpg",
     ],
@@ -466,9 +466,9 @@ export const products: Product[] = [
     price: 48000,
     images: [
       "/images/diamond-tennis-necklace.jpg",
-      "/images/diamond-necklace-skin.jpg",
+      "/images/necklace-white-shirt.jpg",
       "/images/diamond-necklace-model.jpg",
-      "/images/diamond-necklace-skin3.jpg",
+      "/images/pendant-white-shirt.jpg",
     ],
     description:
       "A river of graduated brilliants, each in its own open-backed claw so light passes clean through the line.",
@@ -501,8 +501,8 @@ export const products: Product[] = [
     price: 8900,
     images: [
       "/images/pearl-strand-cream.jpg",
-      "/images/pearls-sunlit.jpg",
-      "/images/pearl-necklace-back.jpg",
+      "/images/pearls-green-rest.jpg",
+      "/images/profile-pearl-choker.jpg",
       "/images/pearls-white-silk.jpg",
     ],
     description:
@@ -605,7 +605,7 @@ export const products: Product[] = [
     price: 96000,
     images: [
       "/images/emerald-diamond-necklace.jpg",
-      "/images/diamond-necklace-skin2.jpg",
+      "/images/portrait-veiled-minimal.jpg",
       "/images/gold-set-dark-plate.jpg",
     ],
     description:

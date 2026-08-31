@@ -233,8 +233,8 @@ export default function AboutPage() {
         <Parallax distance={80} className="absolute inset-0">
           <div className="relative h-[130%] w-full">
             <Image
-              src="/images/model-dance-dark.jpg"
-              alt="Campaign photography for the house"
+              src="/images/gold-earring-veil.jpg"
+              alt="A sculpted gold earring worn in profile, house campaign"
               fill
               sizes="100vw"
               className="object-cover"

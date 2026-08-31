@@ -106,8 +106,8 @@ export function Editorial() {
                 transition={{ duration: 1.8, delay: 0.1, ease: EASE }}
               >
                 <Image
-                  src="/images/bw-model-pose.jpg"
-                  alt="Editorial portrait for the house campaign"
+                  src="/images/portrait-pearls-bw.jpg"
+                  alt="A pearl strand and drop earrings worn in profile, house campaign"
                   fill
                   sizes="(max-width: 1024px) 100vw, 30vw"
                   className="object-cover"

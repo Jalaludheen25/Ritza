@@ -167,6 +167,8 @@ The scripts in `scripts/` are development tools, not part of the app:
 | `build-tryon.mjs` | Try-on plates from black-ground product frames |
 | `build-tryon-demo.mjs` | The before/after pair used by the home-page showcase |
 | `fetch-images.mjs` | Downloads the photography set |
+| `fetch-replacements.mjs` | Downloads the modest-imagery replacement set |
+| `image-usage.mjs` | Maps every image to the file that references it |
 | `shoot.mjs` | Full-page and viewport screenshots of any route, desktop or mobile |
 | `overflow-check.mjs` | Flags horizontal overflow at 390px — how "responsive" quietly breaks |
 | `a11y-check.mjs` | Alt text, accessible names, heading order, labelled inputs |
@@ -178,9 +180,14 @@ They need Chrome at the path set in each file and the dev server running.
 
 ## Notes for the review
 
-- **Photography is placeholder.** The 89 images in `public/images/` are stock, downloaded from
+- **Photography is placeholder.** The images in `public/images/` are stock, downloaded from
   Pexels under its licence, and stand in for a real shoot. Every piece in the catalogue is
   fictional, as are the reviews, prices, addresses and the press quotes.
+- **Imagery standard.** Every model frame on the site is fully clothed — shirts, blazers, knits,
+  abayas and hijabs — and each one shows the jewellery. Anything revealing was removed from
+  `public/images/` outright rather than merely unreferenced, so it cannot be wired back in, and
+  the download manifest in `scripts/fetch-images.mjs` no longer lists it. `scripts/image-usage.mjs`
+  maps every frame to the file that uses it if you want to re-audit.
 - **The prototype says so where it matters.** The payment step, the contact form, the account
   sign-in and the try-on each state plainly that nothing is transmitted, charged or stored.
 - **Promotion codes** `RITZA10` and `ATELIER` work in the bag, for demonstration.
