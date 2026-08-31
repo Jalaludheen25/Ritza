@@ -1,0 +1,279 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Ritza — design tokens
+   Palette sampled directly from the brand mark:
+   ground #f1e7dd · ink #091835 · gold #c9aa6a
+------------------------------------------------------------------ */
+
+@theme {
+  --color-ivory: #f8f4ee;
+  --color-ivory-2: #f2ebe1;
+  --color-sand: #e8dccd;
+  --color-sand-2: #dccbb6;
+
+  --color-ink: #0b1b38;
+  --color-ink-deep: #061027;
+  --color-ink-2: #17294a;
+  --color-ink-3: #3d4d6b;
+  --color-ink-4: #6b7791;
+
+  --color-gold: #c9aa6a;
+  --color-gold-2: #dfc596;
+  --color-gold-3: #a8873f;
+
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-sans: var(--font-jost), ui-sans-serif, system-ui, sans-serif;
+
+  --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --breakpoint-xs: 26rem;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --header-h: 76px;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    overflow-x: hidden;
+  }
+
+  /* Lenis */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  ::selection {
+    background: var(--color-ink);
+    color: var(--color-ivory);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    line-height: 1.02;
+  }
+
+  input, textarea, select, button {
+    font: inherit;
+    color: inherit;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  button:focus-visible,
+  a:focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  img {
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 96rem;
+  }
+  @media (min-width: 768px) {
+    .shell { padding-inline: 2.5rem; }
+  }
+  @media (min-width: 1280px) {
+    .shell { padding-inline: 4rem; }
+  }
+
+  .shell-wide {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+    max-width: 120rem;
+  }
+  @media (min-width: 768px) {
+    .shell-wide { padding-inline: 2rem; }
+  }
+
+  /* Small caps label — the connective tissue of the whole layout */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+  }
+
+  .lede {
+    font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.0625rem);
+    line-height: 1.75;
+    color: color-mix(in oklab, var(--color-ink) 66%, transparent);
+  }
+
+  /* Underline that draws in from the left */
+  .link-line {
+    position: relative;
+    display: inline-block;
+  }
+  .link-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.55s var(--ease-luxe);
+  }
+  .link-line:hover::after,
+  .link-line[data-active="true"]::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .rule {
+    height: 1px;
+    background: color-mix(in oklab, var(--color-ink) 12%, transparent);
+  }
+  .rule-light {
+    height: 1px;
+    background: color-mix(in oklab, var(--color-ivory) 16%, transparent);
+  }
+
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--color-ink) 20%, transparent);
+    padding: 0.75rem 0;
+    font-size: 0.9375rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    transition: border-color 0.4s var(--ease-soft);
+  }
+  .field::placeholder {
+    color: color-mix(in oklab, var(--color-ink) 40%, transparent);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-gold);
+  }
+
+  .field-dark {
+    border-bottom-color: color-mix(in oklab, var(--color-ivory) 25%, transparent);
+    color: var(--color-ivory);
+  }
+  .field-dark::placeholder {
+    color: color-mix(in oklab, var(--color-ivory) 45%, transparent);
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Editorial noise/grain — barely there, keeps flat colour from looking digital */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  }
+
+  .aspect-portrait { aspect-ratio: 3 / 4; }
+  .aspect-tall { aspect-ratio: 2 / 3; }
+}
+
+/* Marquee */
+@keyframes ritza-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: ritza-marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+/* Shimmer used by the try-on scan and skeletons */
+@keyframes ritza-sheen {
+  0% { transform: translateX(-120%); }
+  100% { transform: translateX(220%); }
+}
+
+@keyframes ritza-scan {
+  0% { top: -4%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes ritza-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ritza-twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
