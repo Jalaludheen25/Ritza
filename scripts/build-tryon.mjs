@@ -8,7 +8,7 @@ import sharp from 'sharp';
    `mix-blend-mode: screen`, leaving only the metal and the stones visible. */
 
 const JOBS = [
-  { out: 'necklace-solitaire', src: 'pendant-black-stand',      crop: [0.22, 0.16, 0.58, 0.58], gate: [48, 96] },
+  { out: 'necklace-solitaire', src: 'pendant-black-stand',      crop: [0.36, 0.21, 0.40, 0.44], gate: [70, 124] },
   { out: 'necklace-diamond',   src: 'ring-pendant-black',       crop: [0.52, 0.06, 0.40, 0.90], gate: [30, 84] },
   { out: 'necklace-coin',      src: 'gold-coin-necklace-black', crop: [0.26, 0.22, 0.48, 0.46], gate: [36, 84] },
   { out: 'pendant-gold',       src: 'gold-pendant-black',       crop: [0.06, 0.00, 0.92, 0.58], gate: [30, 92] },

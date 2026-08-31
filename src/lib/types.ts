@@ -44,6 +44,8 @@ export type Product = {
 export type Collection = {
   slug: CollectionSlug;
   name: string;
+  /** Arabic gloss, typeset separately from the English meaning. */
+  arabic?: string;
   meaning: string;
   tagline: string;
   description: string;
@@ -52,7 +54,6 @@ export type Collection = {
   portrait: string;
   still: string;
   year: string;
-  pieces: string;
 };
 
 export type Category = {

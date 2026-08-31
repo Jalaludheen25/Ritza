@@ -134,6 +134,18 @@
     line-height: 1;
   }
 
+  /* Arabic is a connected script: no tracking, no uppercasing, and a
+     face that actually carries the glyphs. */
+  .arabic {
+    font-family: 'Noto Naskh Arabic', 'Segoe UI', 'Times New Roman', serif;
+    letter-spacing: 0;
+    text-transform: none;
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-size: 1.15em;
+    line-height: 1;
+  }
+
   .display {
     font-family: var(--font-display);
     font-weight: 300;
