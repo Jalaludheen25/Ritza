@@ -1,106 +1,159 @@
-import type { Collection, Category } from "@/lib/types";
+import type { Collection, Category, CategorySlug, CollectionSlug } from "@/lib/types";
 
 export const collections: Collection[] = [
   {
-    slug: "noor",
-    name: "Noor",
-    arabic: "نور",
-    meaning: "Light",
-    tagline: "Diamonds cut for the hour before dusk",
+    slug: "anti-tarnish",
+    name: "Ritza Anti-Tarnish",
+    meaning: "Wear it in the sea",
+    tagline: "Jewellery that survives a Dubai summer",
     description:
-      "Our house signature. Brilliant and emerald cuts set in a claw so fine it reads as air, so the stone is the only thing you see.",
+      "316L stainless steel under an 18k gold PVD coat. It does not green, does not blacken and does not mind chlorine, perfume or the gym.",
     story:
-      "Noor began with a question our founder asked a cutter in the Gold Souk: how little metal can hold a diamond? The answer took two years. Every Noor setting is hand-raised in 18k white gold, then thinned by hand until the girdle of the stone sits open to the light on all sides. Worn against skin, the piece disappears and the stone stays.",
-    cover: "/images/diamond-tennis-necklace.jpg",
-    portrait: "/images/gold-teardrop-model.jpg",
-    still: "/images/emerald-cut-pendant.jpg",
+      "The complaint we heard most often was the same one: it turned my skin green by August. Gulf humidity is brutal on plated brass, and most fashion jewellery is plated brass. So we stopped plating. Every Anti-Tarnish piece is solid 316L surgical steel with an 18k gold PVD bond — the same process used on watch cases — which is measured in microns rather than in wishes. Swim in it, shower in it, sweat in it. It comes back the same colour.",
+    cover: "/images/at-chain-layered-model.jpg",
+    portrait: "/images/at-chain-highneck.jpg",
+    still: "/images/at-hoop-studio.jpg",
+    year: "2023",
+    categories: ["cuff-bangles", "chains", "earrings", "anklets"],
+  },
+  {
+    slug: "kerala-traditional",
+    name: "Kerala Traditional",
+    meaning: "കേരളം — the old forms",
+    arabic: "കേരളം",
+    tagline: "Temple jewellery, made the long way",
+    description:
+      "Kasu mala, nagapadam, palakka and jumukka — cast, chased and stone-set by hand in the patterns Kerala goldsmiths have worked for three centuries.",
+    story:
+      "Kerala jewellery is not decoration, it is grammar. A kasu mala counts coins; a nagapadam repeats the serpent hood; palakka sets green stone into gold leaf. Get the proportion wrong and every grandmother in the room knows. We work with two families of goldsmiths in Thrissur who still cut their own dies, and we ship to Dubai because that is where the diaspora is — the same pieces, the same weights, without a flight home to buy them.",
+    cover: "/images/kt-necklace-jasmine.jpg",
+    portrait: "/images/kt-bride-kasavu.jpg",
+    still: "/images/kt-jhumka-stand.jpg",
     year: "2019",
-  },
-  {
-    slug: "dune",
-    name: "Dune",
-    meaning: "The desert, in gold",
-    tagline: "Sculpted 18k, warmed by the Empty Quarter",
-    description:
-      "Solid gold with a hand-brushed finish that catches light the way sand does — soft, directional, never mirrored.",
-    story:
-      "Drive ninety minutes south of the city and the colour changes. Dune is our record of that drive: links pressed into ridged forms, hoops finished with a brush that runs one way only, a signet whose face is left deliberately unpolished. Cast in 18k yellow gold at our Al Quoz atelier and finished by four pairs of hands.",
-    cover: "/images/gold-chain-stone.jpg",
-    portrait: "/images/gold-chains-rail.jpg",
-    still: "/images/gold-hoops-flatlay.jpg",
-    year: "2021",
-  },
-  {
-    slug: "lulua",
-    name: "Lulua",
-    arabic: "لؤلؤة",
-    meaning: "Pearl",
-    tagline: "A century of Gulf pearling, restated",
-    description:
-      "South Sea and Akoya pearls, graded by hand and knotted on silk, in settings built for a wardrobe rather than a vitrine.",
-    story:
-      "Before oil, this coast lived on pearls. Boats left from Al Fahidi in April and returned in September, and the divers who came back rewrote what the Gulf could afford. Lulua is our thank-you note: every strand hand-knotted on silk, every clasp designed to be worn at the front as an ornament in its own right.",
-    cover: "/images/pearl-strand-cream.jpg",
-    portrait: "/images/pearls-black-top-bw.jpg",
-    still: "/images/pearls-white-silk.jpg",
-    year: "2020",
-  },
-  {
-    slug: "mirage",
-    name: "Mirage",
-    meaning: "High jewellery",
-    tagline: "One of one, or close to it",
-    description:
-      "Our rarest stones — Colombian emerald, Kashmir-blue sapphire, fancy-cut diamonds — in pieces made in runs of ten or fewer.",
-    story:
-      "Mirage is where the house stops being a business and starts being a workshop. Stones are bought singly, at auction and from three dealers we have known for a decade. A piece takes between four and eleven months. When a Mirage design sells out it is retired, and the drawings go into the archive.",
-    cover: "/images/pearls-lace-portrait.jpg",
-    portrait: "/images/emerald-diamond-necklace.jpg",
-    still: "/images/gold-set-dark-plate.jpg",
-    year: "2022",
-  },
-  {
-    slug: "vow",
-    name: "Vow",
-    meaning: "Bridal",
-    tagline: "For the sentence you only say once",
-    description:
-      "Engagement and eternity pieces, sized in-atelier and engraved by hand while you wait.",
-    story:
-      "Vow is the quietest thing we make. No house motif, no signature stone, nothing to date it — because a ring worn for fifty years should belong to the wearer and not to us. Every band is finished to your size in our Dubai atelier, and hand-engraved inside at no cost, in any script you bring us.",
-    cover: "/images/rings-white-boxes.jpg",
-    portrait: "/images/rings-white-flowers.jpg",
-    still: "/images/wedding-rings.jpg",
-    year: "2018",
+    categories: [
+      "earrings",
+      "jumukkas",
+      "nose-pins",
+      "necklace",
+      "chokers",
+      "long-haaram",
+      "ear-cuff",
+      "bugatti",
+      "bangles",
+      "hip-chains",
+      "anklets",
+    ],
   },
 ];
 
 export const categories: Category[] = [
   {
-    slug: "necklaces",
-    name: "Necklaces",
-    blurb: "Rivières, strands and pendants",
-    image: "/images/gold-necklace-white.jpg",
+    slug: "cuff-bangles",
+    name: "Cuff Bangles",
+    blurb: "Open cuffs and stacking bands",
+    image: "/images/at-cuff-sculpt.jpg",
+    collections: ["anti-tarnish"],
+  },
+  {
+    slug: "chains",
+    name: "Chains",
+    blurb: "Fine, layered and pendant chains",
+    image: "/images/at-chain-silk.jpg",
+    collections: ["anti-tarnish"],
   },
   {
     slug: "earrings",
     name: "Earrings",
-    blurb: "Hoops, studs and drops",
-    image: "/images/gold-hoops-flatlay.jpg",
+    blurb: "Hoops, studs and temple drops",
+    image: "/images/at-hoop-studio.jpg",
+    collections: ["anti-tarnish", "kerala-traditional"],
   },
   {
-    slug: "rings",
-    name: "Rings",
-    blurb: "Solitaires, signets and bands",
-    image: "/images/rings-mirror.jpg",
+    slug: "anklets",
+    name: "Anklets",
+    blurb: "Everyday chains and kolusu",
+    image: "/images/kt-anklet-pair.jpg",
+    collections: ["anti-tarnish", "kerala-traditional"],
   },
   {
-    slug: "bracelets",
-    name: "Bracelets",
-    blurb: "Links, cuffs and strands",
-    image: "/images/gold-link-bracelet.jpg",
+    slug: "jumukkas",
+    name: "Jumukkas",
+    blurb: "The bell drop, in every weight",
+    image: "/images/kt-jhumka-stand.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "nose-pins",
+    name: "Nose Pins",
+    blurb: "Mookuthi and bridal nath",
+    image: "/images/kt-nosepin-close.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "necklace",
+    name: "Necklace",
+    blurb: "Kasu mala and temple work",
+    image: "/images/kt-necklace-pot.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "chokers",
+    name: "Chokers",
+    blurb: "Attiyal worn at the throat",
+    image: "/images/kt-choker-gold.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "long-haaram",
+    name: "Long Haaram",
+    blurb: "Waist-length ceremonial chains",
+    image: "/images/kt-haaram-bust.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "ear-cuff",
+    name: "Ear Cuff",
+    blurb: "Clipped to the helix, no piercing",
+    image: "/images/at-earcuff-hand.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "bugatti",
+    name: "Bugatti",
+    blurb: "The pierced upper-ear ornament",
+    image: "/images/at-hoop-ear.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "bangles",
+    name: "Bangles",
+    blurb: "Kada, palakka and stacks",
+    image: "/images/kt-bangle-ornate.jpg",
+    collections: ["kerala-traditional"],
+  },
+  {
+    slug: "hip-chains",
+    name: "Hip Chains",
+    blurb: "Oddiyanam and aranjanam",
+    image: "/images/at-chain-coiled.jpg",
+    collections: ["kerala-traditional"],
   },
 ];
 
 export const getCollection = (slug: string) => collections.find((c) => c.slug === slug);
 export const getCategory = (slug: string) => categories.find((c) => c.slug === slug);
+
+/** Categories belonging to one line, in the order that line lists them. */
+export const categoriesFor = (collection: CollectionSlug) => {
+  const line = getCollection(collection);
+  if (!line) return [];
+  return line.categories
+    .map((slug) => categories.find((c) => c.slug === slug))
+    .filter(Boolean) as Category[];
+};
+
+export const categoryName = (slug: CategorySlug) =>
+  categories.find((c) => c.slug === slug)?.name ?? slug;
+
+export const collectionName = (slug: CollectionSlug) =>
+  collections.find((c) => c.slug === slug)?.name ?? slug;

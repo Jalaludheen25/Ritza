@@ -24,19 +24,19 @@ const DELIVERY_OPTIONS = [
   {
     id: "standard",
     name: "Insured standard",
-    detail: "2–5 working days, signature required",
+    detail: "Next working day in the UAE, signature required",
     price: 0,
   },
   {
     id: "express",
     name: "Insured express",
-    detail: "Next working day within the UAE",
+    detail: "Same day within Dubai, ordered before 2pm",
     price: 90,
   },
   {
     id: "atelier",
-    name: "Collect from the atelier",
-    detail: "Alserkal Avenue, ready in 24 hours",
+    name: "Collect in store",
+    detail: "Meena Bazaar counter, ready in 24 hours",
     price: 0,
   },
 ];
@@ -353,7 +353,7 @@ export function CheckoutView() {
                         <span>
                           <span className="block">Gift presentation — {formatPrice(75)}</span>
                           <span className="mt-1 block text-[12.5px] opacity-50">
-                            Lacquered box, hand-tied ribbon, and a card written in the atelier.
+                            Lacquered box, hand-tied ribbon, and a card written by hand.
                           </span>
                         </span>
                       </label>
@@ -445,7 +445,7 @@ export function CheckoutView() {
                         {form.firstName} {form.lastName}
                         <br />
                         {form.delivery === "atelier" ? (
-                          "Collection — Alserkal Avenue, Dubai"
+                          "Collection — Meena Bazaar, Bur Dubai"
                         ) : (
                           <>
                             {form.address}
@@ -669,11 +669,11 @@ function Confirmation({
         </div>
         <p className="eyebrow mt-8 text-gold-3">Order placed</p>
         <h1 className="display mt-5 text-[clamp(2.25rem,1.5rem+3.4vw,4rem)]">
-          Thank you — it is with the atelier
+          Thank you — it is with the workshop
         </h1>
         <p className="lede mx-auto mt-6 max-w-md">
-          We have sent a confirmation to {email || "your inbox"}. Your pieces will be checked,
-          boxed and photographed before they leave us.
+          We have sent a confirmation to {email || "your inbox"}. Your pieces will be checked and
+          boxed with their care cloth before they leave us.
         </p>
 
         <dl className="mx-auto mt-12 grid max-w-lg grid-cols-2 gap-y-8 border-y border-ink/10 py-8 text-left">
@@ -689,15 +689,15 @@ function Confirmation({
             <dt className="eyebrow text-[9px] opacity-45">Expected</dt>
             <dd className="mt-2.5 text-[15px]">
               {option.id === "express"
-                ? "Tomorrow"
+                ? "Today"
                 : option.id === "atelier"
                   ? "Ready in 24 hours"
-                  : "2–5 working days"}
+                  : "Next working day"}
             </dd>
           </div>
           <div>
             <dt className="eyebrow text-[9px] opacity-45">Included</dt>
-            <dd className="mt-2.5 text-[15px]">Certification and lifetime care</dd>
+            <dd className="mt-2.5 text-[15px]">Care cloth, pouch and warranty</dd>
           </div>
         </dl>
 

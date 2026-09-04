@@ -9,8 +9,9 @@ import { Button } from "@/components/ui/Button";
 import { Stars, Quantity, Accordion } from "@/components/ui/bits";
 import { EASE } from "@/components/ui/motion";
 import { TryOnModal } from "./TryOnModal";
+import { collectionName } from "@/lib/data/collections";
 import { useStore } from "@/lib/store";
-import { cn, formatPrice, titleCase } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 
 export function ProductInfo({ product }: { product: Product }) {
   const { addToCart, toggleWishlist, inWishlist, hydrated, pushRecent } = useStore();
@@ -48,7 +49,7 @@ export function ProductInfo({ product }: { product: Product }) {
   return (
     <div className="lg:sticky lg:top-[110px]">
       <Link href={`/collections/${product.collection}`} className="eyebrow link-line text-gold-3">
-        {titleCase(product.collection)}
+        {collectionName(product.collection)}
       </Link>
 
       <h1 className="display mt-5 text-[clamp(2rem,1.4rem+2.2vw,3.25rem)]">{product.name}</h1>
@@ -73,7 +74,7 @@ export function ProductInfo({ product }: { product: Product }) {
         <div className="mt-9">
           <div className="flex items-baseline justify-between">
             <p className="eyebrow text-[9px] opacity-60">Size</p>
-            <Link href="/contact#sizing" className="link-line text-[12px] opacity-45">
+            <Link href="/faq#sizing" className="link-line text-[12px] opacity-45">
               Sizing guide
             </Link>
           </div>
@@ -157,16 +158,16 @@ export function ProductInfo({ product }: { product: Product }) {
         <li className="flex gap-3">
           <span className="text-gold-3">—</span>
           {product.inStock
-            ? "In the atelier — ships within two working days"
-            : "Made to order — seven to twelve working days"}
+            ? "In stock — dispatched the same working day"
+            : "Made to order — eight to fourteen weeks"}
         </li>
         <li className="flex gap-3">
           <span className="text-gold-3">—</span>
-          Complimentary insured delivery across the GCC
+          Free delivery over AED 200, same day across Dubai
         </li>
         <li className="flex gap-3">
           <span className="text-gold-3">—</span>
-          Thirty-day returns, and lifetime care
+          Thirty-day returns, free sizing and restringing for life
         </li>
       </ul>
 
@@ -187,14 +188,14 @@ export function ProductInfo({ product }: { product: Product }) {
               </dl>
             ),
           },
-          { title: "From the atelier", content: <p>{product.detail}</p> },
+          { title: "From the workshop", content: <p>{product.detail}</p> },
           {
             title: "Care",
             content: (
               <p>
-                Keep away from perfume, chlorine and abrasives. Wipe with the cloth in the box after
-                wearing. Bring it to us once a year and we will clean, polish and re-rhodium it —
-                free, for as long as it is yours.
+                Anti-Tarnish pieces need nothing: shower, swim and sweat in them, then wipe dry.
+                Kerala Traditional plating is more delicate — keep it away from perfume, put it on
+                last and take it off first, and store it in the pouch rather than loose in a drawer.
               </p>
             ),
           },
@@ -202,9 +203,9 @@ export function ProductInfo({ product }: { product: Product }) {
             title: "Delivery & returns",
             content: (
               <p>
-                Insured worldwide delivery with signature on receipt, complimentary across the GCC.
-                Thirty days to return anything unworn in its original box. Engraved and made-to-order
-                pieces are excluded, which we confirm before starting.
+                Free over AED 200 — same day in Dubai, next working day across the UAE, two to five
+                days in the GCC. Thirty days to return anything unworn in its original box. Pierced
+                items cannot be returned once the hygiene seal is broken.
               </p>
             ),
           },
@@ -214,7 +215,7 @@ export function ProductInfo({ product }: { product: Product }) {
       <p className="mt-8 text-[13px] opacity-55">
         Questions about this piece?{" "}
         <Link href="/contact" className="link-line">
-          Speak to the atelier
+          Speak to the workshop
         </Link>
         .
       </p>

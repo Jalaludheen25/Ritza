@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { Product } from "@/lib/types";
 import { formatPrice, cn } from "@/lib/utils";
+import { collectionName } from "@/lib/data/collections";
 import { useStore } from "@/lib/store";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { Stars, Quantity } from "@/components/ui/bits";
@@ -114,7 +115,7 @@ export function QuickView({
                   </span>
                 </button>
 
-                <p className="eyebrow text-gold-3">{product.collection}</p>
+                <p className="eyebrow text-gold-3">{collectionName(product.collection)}</p>
                 <h2 className="display mt-3 text-[2rem] leading-none">{product.name}</h2>
                 <p className="mt-2 text-[13px] opacity-55">{product.tagline}</p>
 

@@ -56,7 +56,7 @@ export function CompleteYourLook({ pieces, hero }: { pieces: Product[]; hero: Pr
         <div className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-6 lg:grid-cols-4">
           <Reveal className="col-span-2 lg:col-span-1">
             <div className="relative h-full min-h-[220px] bg-ink p-6 text-ivory">
-              <p className="eyebrow text-gold-2">Styled by the atelier</p>
+              <p className="eyebrow text-gold-2">Styled by us</p>
               <p className="display mt-4 text-[1.75rem] leading-tight">
                 The pieces we would put with it
               </p>

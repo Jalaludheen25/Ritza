@@ -23,7 +23,7 @@ page.on('pageerror', (e) => errors.push('PAGEERROR ' + String(e).slice(0, 200)))
 await page.evaluateOnNewDocument(() => {
   try { sessionStorage.setItem('ritza.entered', '1'); } catch {}
 });
-await page.goto('http://localhost:3000/product/noor-emerald-cut-pendant?tryon=1', {
+await page.goto('http://localhost:3000/product/kasu-mala-necklace?tryon=1', {
   waitUntil: 'networkidle2',
   timeout: 60000,
 });

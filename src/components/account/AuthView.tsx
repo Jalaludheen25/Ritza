@@ -50,7 +50,7 @@ export function AuthView() {
       {/* image side */}
       <div className="relative hidden lg:block">
         <Image
-          src="/images/pearl-necklace-red-lips.jpg"
+          src="/images/kt-choker-ornate.jpg"
           alt=""
           fill
           priority
@@ -60,9 +60,9 @@ export function AuthView() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/30" />
         <div className="absolute inset-x-0 bottom-0 p-12">
           <p className="display max-w-md text-ivory text-[2.5rem] leading-tight">
-            An account keeps your sizes, your certificates and your care history in one place.
+            An account keeps your sizes, your orders and your warranty in one place.
           </p>
-          <p className="eyebrow mt-6 text-[9px] text-ivory/45">Ritza — Alserkal Avenue, Dubai</p>
+          <p className="eyebrow mt-6 text-[9px] text-ivory/45">Ritza — Meena Bazaar, Bur Dubai</p>
         </div>
       </div>
 

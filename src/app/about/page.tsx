@@ -11,62 +11,62 @@ import { Lockup } from "@/components/ui/Logo";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Ritza is a Dubai jewellery house founded in 2016. Eleven people, one bench each, and everything finished by hand in Al Quoz.",
+    "Ritza sells two lines from one Dubai workshop — 316L anti-tarnish steel, and Kerala temple jewellery cast in Thrissur.",
 };
 
 const TIMELINE = [
   {
-    year: "2016",
-    title: "One bench, Al Quoz",
-    body: "Ritza opens with a single setter's bench and a rented safe, making commissions for people who had run out of patience with the malls.",
-  },
-  {
-    year: "2018",
-    title: "Vow",
-    body: "The bridal collection arrives after two years of being asked for it. Every band made to size, engraved by hand, no charge.",
-  },
-  {
     year: "2019",
-    title: "Noor",
-    body: "Two years of failed prototypes end in a claw drawn from a single length of gold — thin enough to disappear, strong enough to hold.",
+    title: "A stall in Meena Bazaar",
+    body: "Ritza starts as one counter selling Kerala temple jewellery to the Malayali community in Bur Dubai — pieces brought over in a suitcase, four times a year.",
   },
   {
     year: "2020",
-    title: "Lulua",
-    body: "We start buying South Sea and Akoya pearls directly, and knotting every strand on silk in-house.",
+    title: "Thrissur, directly",
+    body: "We stop buying through middlemen and start working with two families of goldsmiths who still cut their own dies. Prices drop; quality does not.",
   },
   {
     year: "2021",
-    title: "The Alserkal salon",
-    body: "A room of our own on Alserkal Avenue, by appointment, with the workshop eleven minutes away.",
+    title: "The green-wrist problem",
+    body: "The complaint we hear every August: it turned my skin green. Gulf humidity destroys plated brass, and plated brass is what fashion jewellery is.",
+  },
+  {
+    year: "2023",
+    title: "Ritza Anti-Tarnish",
+    body: "We stop plating. The second line launches in solid 316L surgical steel under an 18k gold PVD bond — the process used on watch cases, measured in microns.",
   },
   {
     year: "2025",
-    title: "Eleven hands",
-    body: "Four setters, two polishers, a stringer, a caster, two designers and one person who does nothing but check.",
+    title: "Online, across the GCC",
+    body: "The site opens. Same-day in Dubai, next day nationwide, and the traditional line finally reachable without a flight home.",
+  },
+  {
+    year: "2026",
+    title: "Forty-two pieces",
+    body: "Two lines, thirteen categories, and a workshop in Al Quoz that sizes, restrings and repairs anything we have ever sold.",
   },
 ];
 
 const PRINCIPLES = [
   {
     n: "01",
-    title: "Nothing plated",
-    body: "18k throughout, or platinum. If a piece is white, it is white gold with rhodium we will renew for you, for free, forever.",
+    title: "Honest about materials",
+    body: "Anti-Tarnish is 316L steel with 18k gold PVD. Kerala Traditional is gold-plated brass. Neither is solid gold and we will never let you think otherwise.",
   },
   {
     n: "02",
-    title: "One stone at a time",
-    body: "Centre stones are bought singly and to a report. Melee comes through the Kimberley Process and is audited once a year.",
+    title: "The plating is the product",
+    body: "2.5 microns of PVD, not the 0.1 micron flash most fashion jewellery ships with. That single number is the difference between two years and two months.",
   },
   {
     n: "03",
-    title: "Finished by hand",
-    body: "Casting is a start, not a finish. Every surface is filed, sanded and polished by a person who signs for it.",
+    title: "The old patterns, unaltered",
+    body: "Nagapadam, palakka, kasu, mullamottu. We do not modernise the proportions to save metal — get them wrong and every grandmother in the room knows.",
   },
   {
     n: "04",
-    title: "Made near you",
-    body: "Eleven minutes separate the salon from the bench. Anything can be altered, and most things can be altered while you wait.",
+    title: "Fixed here, not shipped away",
+    body: "Sizing, restringing and repair happen in Al Quoz. Bring a piece in on a Tuesday and most things are done the same week.",
   },
 ];
 
@@ -78,8 +78,8 @@ export default function AboutPage() {
       {/* hero */}
       <section className="relative h-[86svh] min-h-[540px] overflow-hidden bg-ink">
         <Image
-          src="/images/dubai-palms-pool.jpg"
-          alt="Dubai, late afternoon"
+          src="/images/kt-necklace-jasmine.jpg"
+          alt="A Kerala temple necklace worn with jasmine"
           fill
           priority
           quality={86}
@@ -92,14 +92,14 @@ export default function AboutPage() {
           <Reveal>
             <div className="flex items-center gap-3">
               <span className="h-px w-10 bg-gold" />
-              <span className="eyebrow text-gold-2">The house — since 2016</span>
+              <span className="eyebrow text-gold-2">The house — since 2019</span>
             </div>
           </Reveal>
           <h1 className="display mt-7 max-w-5xl text-ivory text-[clamp(2.5rem,1.4rem+5.4vw,6.5rem)]">
             <TextReveal text="Eleven minutes from" />
             <br />
             <em className="font-normal italic">
-              <TextReveal text="the bench to the box" delay={0.1} />
+              <TextReveal text="workshop in Al Quoz" delay={0.1} />
             </em>
           </h1>
         </div>
@@ -112,27 +112,26 @@ export default function AboutPage() {
             <Reveal>
               <p className="eyebrow text-gold-3">Why we started</p>
               <h2 className="display mt-6 text-[clamp(1.9rem,1.3rem+2.6vw,3.25rem)]">
-                Dubai buys more gold than almost anywhere. Almost none of it is made here.
+Two problems, seven years apart, and the same answer both times.
               </h2>
             </Reveal>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
             <Reveal delay={0.1}>
               <p className="lede">
-                That was the sentence the house started from. The Gold Souk sells beautifully and
-                buys beautifully, but the making had drifted elsewhere — to Italy, to India, to
-                whoever could cast cheapest that quarter.
+                The first was distance. The Malayali community here is enormous, and until recently
+                buying a proper kasu mala meant waiting for a trip home or trusting a suitcase.
+                We fixed that by working directly with two goldsmith families in Thrissur.
               </p>
               <p className="lede mt-5">
-                We wanted the whole thing in one building: the wax, the cast, the setting, the
-                polish, the person who tells you the stone is not good enough. It took three years
-                to get all eleven of those jobs under one roof, and it is the only thing about
-                Ritza we would refuse to change.
+                The second was chemistry. Every summer the same complaint came back — it turned my
+                skin green. Gulf humidity eats plated brass, so for the everyday line we stopped
+                plating altogether and moved to solid steel under a PVD bond.
               </p>
               <p className="lede mt-5">
-                What it buys you is unglamorous and enormous — a ring that can be altered on a
-                Tuesday, a clasp that can be remade the same week, a chain that can be shortened
-                while you have coffee downstairs.
+                What you get is two lines that do not pretend to be each other. One is ceremonial
+                and made the slow way. The other you can wear in the sea. Both are finished, sized
+                and repaired in the same Al Quoz workshop.
               </p>
             </Reveal>
           </div>
@@ -142,24 +141,24 @@ export default function AboutPage() {
       {/* two frames */}
       <section className="shell grid gap-6 pb-20 md:grid-cols-12 md:gap-8 md:pb-32">
         <ImageReveal
-          src="/images/gold-chains-rail.jpg"
-          alt="Chains on the rail in the atelier"
+          src="/images/kt-jhumka-stand.jpg"
+          alt="Jumukka on the bench in the workshop"
           className="aspect-[4/5] md:col-span-7"
           sizes="(max-width: 768px) 100vw, 58vw"
           drift={40}
         />
         <div className="flex flex-col justify-end md:col-span-4 md:col-start-9">
           <ImageReveal
-            src="/images/gold-jewels-plate-2.jpg"
-            alt="A day's work laid out"
+            src="/images/at-hoop-studio.jpg"
+            alt="Anti-tarnish hoops, a day's output"
             className="aspect-square"
             sizes="(max-width: 768px) 100vw, 30vw"
             delay={0.15}
           />
           <Reveal delay={0.2}>
             <p className="mt-6 text-[13px] leading-relaxed opacity-55">
-              Everything that leaves the bench is laid out and checked twice — once by the person
-              who made it, once by the person whose only job is to disagree with them.
+              Every piece is checked twice before it is boxed — once by the person who finished it,
+              once by the person whose only job is to disagree with them.
             </p>
           </Reveal>
         </div>
@@ -228,13 +227,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* atelier parallax */}
+      {/* campaign parallax */}
       <section className="relative h-[70vh] min-h-[420px] overflow-hidden">
         <Parallax distance={80} className="absolute inset-0">
           <div className="relative h-[130%] w-full">
             <Image
-              src="/images/gold-earring-veil.jpg"
-              alt="A sculpted gold earring worn in profile, house campaign"
+              src="/images/kt-choker-ornate.jpg"
+              alt="A kundan choker photographed for the house campaign"
               fill
               sizes="100vw"
               className="object-cover"
@@ -246,11 +245,10 @@ export default function AboutPage() {
           <Reveal>
             <blockquote className="max-w-2xl">
               <p className="display text-ivory text-[clamp(1.75rem,1.2rem+2.4vw,3rem)] leading-tight italic">
-                “A piece should look better in five years than it did in the box. That is the whole
-                brief.”
+                “If it cannot survive a Dubai summer, it is not jewellery. It is a souvenir.”
               </p>
               <footer className="eyebrow mt-6 text-[9px] text-ivory/50">
-                Founder, Ritza — Dubai
+                Founder, Ritza — Bur Dubai
               </footer>
             </blockquote>
           </Reveal>
@@ -333,7 +331,7 @@ export default function AboutPage() {
                   </dd>
                 </div>
                 <div className="flex justify-between gap-6 py-5">
-                  <dt className="eyebrow text-[9px] opacity-45">Atelier</dt>
+                  <dt className="eyebrow text-[9px] opacity-45">Workshop</dt>
                   <dd className="text-right text-[13.5px] leading-relaxed">
                     {site.atelier.line1}
                     <br />

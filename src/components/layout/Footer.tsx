@@ -10,11 +10,11 @@ import { site } from "@/lib/data/site";
 import { ArrowRight } from "@/components/ui/Button";
 
 const CARE = [
-  { label: "Shipping & returns", href: "/contact#shipping" },
-  { label: "Sizing guide", href: "/contact#sizing" },
-  { label: "Care & repairs", href: "/contact#care" },
-  { label: "Book an appointment", href: "/contact" },
-  { label: "Frequently asked", href: "/contact#faq" },
+  { label: "Shipping & returns", href: "/shipping-returns" },
+  { label: "Sizing guide", href: "/faq#sizing" },
+  { label: "Care & repairs", href: "/faq#care" },
+  { label: "Frequently asked", href: "/faq" },
+  { label: "Contact us", href: "/contact" },
 ];
 
 export function Footer() {
@@ -30,15 +30,15 @@ export function Footer() {
             <Reveal>
               <Wordmark tone="ivory" className="w-[132px]" />
               <p className="lede mt-8 max-w-sm text-ivory/55">
-                A Dubai house working in 18k gold, certified stones and Gulf pearls. Everything we
-                sell is finished by hand, ten minutes from where you are standing.
+                Two lines from one Dubai workshop — 316L anti-tarnish steel you can swim in, and
+                Kerala temple jewellery made the way Thrissur has always made it.
               </p>
             </Reveal>
 
             <Reveal delay={0.1} className="mt-10">
               <p className="eyebrow text-gold-2">The letter</p>
               <p className="mt-3 max-w-sm text-[13.5px] leading-relaxed text-ivory/50">
-                New pieces, atelier notes and private viewings. Six times a year, never more.
+                New pieces, restock alerts and workshop notes. Six times a year, never more.
               </p>
               <form
                 className="mt-6 max-w-sm"
@@ -86,7 +86,7 @@ export function Footer() {
             <FooterColumn
               title="Shop"
               links={[
-                ...categories.map((c) => ({ label: c.name, href: `/shop?category=${c.slug}` })),
+                ...categories.map((c) => ({ label: c.name, href: `/category/${c.slug}` })),
                 { label: "Everything", href: "/shop" },
               ]}
             />
@@ -98,10 +98,10 @@ export function Footer() {
           </div>
         </div>
 
-        {/* atelier strip */}
+        {/* store strip */}
         <div className="mt-20 grid gap-8 border-t border-ivory/10 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
-            <p className="eyebrow text-ivory/40">Salon</p>
+            <p className="eyebrow text-ivory/40">Store</p>
             <p className="mt-3 text-[13.5px] leading-relaxed text-ivory/70">
               {site.address.line1}
               <br />
@@ -171,10 +171,10 @@ export function Footer() {
           </p>
         </div>
         <div className="flex items-center gap-6 text-[11px] text-ivory/40">
-          <Link href="/contact" className="link-line">
+          <Link href="/privacy" className="link-line">
             Privacy
           </Link>
-          <Link href="/contact" className="link-line">
+          <Link href="/terms" className="link-line">
             Terms
           </Link>
           <span className="hidden sm:inline">Prices in UAE dirhams</span>

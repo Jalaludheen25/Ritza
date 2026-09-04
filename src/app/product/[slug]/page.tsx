@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { products, getProduct, getProducts, byCollection } from "@/lib/data/products";
+import { products, getProduct, getProducts, recommend } from "@/lib/data/products";
 import { getCollection } from "@/lib/data/collections";
 import { Gallery } from "@/components/product/Gallery";
 import { ProductInfo } from "@/components/product/ProductInfo";
@@ -40,9 +40,8 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
   const collection = getCollection(product.collection)!;
   const pairs = getProducts(product.pairsWith).slice(0, 3);
-  const related = byCollection(product.collection)
-    .filter((p) => p.slug !== product.slug)
-    .slice(0, 4);
+  /* content-scored: same category first, then same line, finish and price band */
+  const related = recommend(product.slug, 4);
 
   return (
     <div className="pt-[86px] md:pt-[104px]">
@@ -57,7 +56,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
             Shop
           </Link>
           <span className="opacity-25">/</span>
-          <Link href={`/shop?category=${product.category}`} className="link-line opacity-45">
+          <Link href={`/category/${product.category}`} className="link-line opacity-45">
             {product.category[0].toUpperCase() + product.category.slice(1)}
           </Link>
           <span className="opacity-25">/</span>

@@ -16,27 +16,27 @@ import { site } from "@/lib/data/site";
 const ORDERS = [
   {
     ref: "RZ-482190",
-    date: "2 May 2025",
+    date: "2 May 2026",
     status: "Delivered",
-    total: 27800,
+    total: 660,
     items: [
-      { slug: "noor-emerald-cut-pendant", qty: 1 },
-      { slug: "dune-hoop-earrings", qty: 1 },
+      { slug: "vega-sculpted-cuff", qty: 1 },
+      { slug: "halo-everyday-hoops", qty: 1 },
     ],
   },
   {
     ref: "RZ-471044",
-    date: "14 March 2025",
-    status: "With the atelier",
-    total: 18900,
-    items: [{ slug: "noor-solitaire-ring", qty: 1 }],
+    date: "14 March 2026",
+    status: "In the workshop",
+    total: 2800,
+    items: [{ slug: "kasu-mala-necklace", qty: 1 }],
   },
   {
     ref: "RZ-460318",
-    date: "8 January 2025",
+    date: "8 January 2026",
     status: "Delivered",
-    total: 8900,
-    items: [{ slug: "lulua-pearl-strand", qty: 1 }],
+    total: 820,
+    items: [{ slug: "sol-coin-layer-set", qty: 1 }],
   },
 ];
 
@@ -90,7 +90,7 @@ export function AccountView() {
             </ButtonLink>
           )}
           <ButtonLink href="/contact" variant="ink" size="sm">
-            Book an appointment
+            Visit the counter
           </ButtonLink>
         </div>
       </div>
@@ -224,8 +224,8 @@ export function AccountView() {
                   <Detail label="Name" value={name} />
                   <Detail label="Email" value={email} />
                   <Detail label="Mobile" value="+971 50 ••• ••42" />
-                  <Detail label="Ring size on file" value="54" />
-                  <Detail label="Preferred metal" value="18k yellow gold" />
+                  <Detail label="Bangle size on file" value="2.6&quot;" />
+                  <Detail label="Preferred finish" value="18k gold PVD" />
                 </dl>
                 <Button variant="outline" size="sm" className="mt-7">
                   Edit details

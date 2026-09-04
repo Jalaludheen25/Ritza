@@ -16,7 +16,7 @@ page.on('pageerror', (e) => errors.push('PAGEERROR ' + String(e).slice(0, 180)))
 page.on('console', (m) => m.type() === 'error' && errors.push(m.text().slice(0, 180)));
 
 const seed = JSON.stringify({
-  cart: [{ slug: 'noor-riviere-necklace', quantity: 1 }, { slug: 'dune-hoop-earrings', quantity: 2 }],
+  cart: [{ slug: 'kasu-mala-necklace', quantity: 1 }, { slug: 'halo-everyday-hoops', quantity: 2 }],
   wishlist: [], recent: [], customer: null,
 });
 await page.evaluateOnNewDocument((s) => {
@@ -47,11 +47,11 @@ await page.evaluate(() => {
   [...document.querySelectorAll('button')].find(b => b.getAttribute('aria-label') === 'Search')?.click();
 });
 await new Promise(r => setTimeout(r, 900));
-await page.type('input[aria-label="Search the collection"]', 'pearl', { delay: 40 });
+await page.type('input[aria-label="Search the collection"]', 'jumukka', { delay: 40 });
 await new Promise(r => setTimeout(r, 1000));
 await page.screenshot({ path: `${OUT}/flow-search.png` });
 const searchResults = await page.evaluate(() => document.body.innerText.match(/(\d+) pieces?/)?.[0] ?? 'n/a');
-console.log('search "pearl" ->', searchResults);
+console.log('search "jumukka" ->', searchResults);
 await page.keyboard.press('Escape');
 await new Promise(r => setTimeout(r, 700));
 

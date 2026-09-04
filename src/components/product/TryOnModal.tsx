@@ -7,6 +7,7 @@ import type { Product } from "@/lib/types";
 import { Button } from "@/components/ui/Button";
 import { EASE } from "@/components/ui/motion";
 import { Monogram } from "@/components/ui/Logo";
+import { collectionName } from "@/lib/data/collections";
 import { useStore } from "@/lib/store";
 import { cn, clamp, formatPrice } from "@/lib/utils";
 import { lockScroll } from "@/components/layout/SmoothScroll";
@@ -309,7 +310,7 @@ export function TryOnModal({
 
                 {/* controls */}
                 <div className="lg:col-span-5">
-                  <p className="eyebrow text-gold-2">{product.collection}</p>
+                  <p className="eyebrow text-gold-2">{collectionName(product.collection)}</p>
                   <h2 className="display mt-3 text-[2rem] leading-none md:text-[2.5rem]">
                     {product.name}
                   </h2>

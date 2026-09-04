@@ -11,7 +11,7 @@ import { formatPrice } from "@/lib/utils";
 import { EASE } from "@/components/ui/motion";
 import { lockScroll } from "./SmoothScroll";
 
-const SUGGESTED = ["Diamond", "Pearl", "Hoops", "Solitaire", "Gold chain", "Bridal"];
+const SUGGESTED = ["Jumukka", "Kasu mala", "Anti-tarnish", "Anklet", "Kundan", "Hoops", "Choker"];
 
 export function SearchOverlay() {
   const { searchOpen, setSearchOpen } = useStore();
@@ -42,7 +42,7 @@ export function SearchOverlay() {
     if (!q) return [];
     return products
       .filter((p) =>
-        [p.name, p.tagline, p.category, p.collection, p.stone, p.metal, p.description]
+        [p.name, p.tagline, p.category, p.collection, p.stone, p.finish, p.description]
           .join(" ")
           .toLowerCase()
           .includes(q),

@@ -9,7 +9,7 @@ import { faqs, services, site } from "@/lib/data/site";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Book an appointment at the Alserkal Avenue salon, or write to the atelier. We answer within one working day.",
+    "Visit the counter in Meena Bazaar or message the workshop. We answer within one working day.",
 };
 
 export default function ContactPage() {
@@ -32,8 +32,8 @@ export default function ContactPage() {
         </h1>
         <Reveal delay={0.15}>
           <p className="lede mt-8 max-w-lg">
-            No call centre and no chatbot. Messages go to the atelier, and the person who answers is
-            usually the person who would make the piece.
+            No call centre and no chatbot. Messages reach the workshop, and the person who answers
+            is usually the person who would size or repair the piece.
           </p>
         </Reveal>
       </div>
@@ -59,7 +59,7 @@ export default function ContactPage() {
             </div>
 
             <div className="mt-10">
-              <p className="eyebrow text-gold-3">The atelier</p>
+              <p className="eyebrow text-gold-3">The workshop</p>
               <p className="mt-5 text-[14px] leading-relaxed opacity-70">
                 {site.atelier.line1}
                 <br />
@@ -128,18 +128,18 @@ export default function ContactPage() {
       {/* salon image */}
       <section className="shell pb-16 md:pb-24">
         <ImageReveal
-          src="/images/gold-chains-rail.jpg"
-          alt="Inside the Ritza atelier"
+          src="/images/kt-jhumka-stand.jpg"
+          alt="Inside the Ritza workshop"
           className="aspect-[21/9] w-full"
           sizes="100vw"
           drift={44}
         />
         <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
           <p className="eyebrow text-[9px] opacity-45">
-            The atelier — Al Quoz Industrial 3, Dubai
+            The workshop — Al Quoz Industrial 3, Dubai
           </p>
           <a
-            href="https://maps.google.com/?q=Alserkal+Avenue+Dubai"
+            href="https://maps.google.com/?q=Meena+Bazaar+Bur+Dubai"
             target="_blank"
             rel="noreferrer"
             className="link-line eyebrow text-[9px] text-gold-3"

@@ -11,8 +11,9 @@ import { Quantity } from "@/components/ui/bits";
 import { ButtonLink } from "@/components/ui/Button";
 import { EASE } from "@/components/ui/motion";
 import { lockScroll } from "./SmoothScroll";
+import { FREE_SHIPPING } from "@/components/cart/CartView";
 
-const FREE_SHIPPING = 2500;
+
 
 export function CartDrawer() {
   const { cartOpen, setCartOpen, cart, removeFromCart, setQuantity, subtotal } = useStore();
@@ -72,7 +73,7 @@ export function CartDrawer() {
               <div className="flex flex-1 flex-col items-center justify-center px-10 text-center">
                 <p className="display text-3xl">Your bag is empty</p>
                 <p className="lede mt-4 text-[14px]">
-                  Nothing chosen yet. The house signature is a good place to start.
+                  Nothing chosen yet. The best sellers are a good place to start.
                 </p>
                 <ButtonLink
                   href="/shop"
@@ -88,11 +89,10 @@ export function CartDrawer() {
                 <div className="shrink-0 border-b border-ink/10 px-6 py-4">
                   <p className="text-[12px] tracking-wide">
                     {progress >= 1 ? (
-                      <span className="text-gold-3">Insured delivery is on us</span>
+                      <span className="text-gold-3">Delivery is on us</span>
                     ) : (
                       <>
-                        {formatPrice(FREE_SHIPPING - subtotal)} more for complimentary insured
-                        delivery
+                        {formatPrice(FREE_SHIPPING - subtotal)} more for free delivery
                       </>
                     )}
                   </p>

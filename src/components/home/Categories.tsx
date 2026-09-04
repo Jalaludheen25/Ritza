@@ -4,13 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { categories } from "@/lib/data/collections";
+import type { Category, CategorySlug } from "@/lib/types";
 import { byCategory } from "@/lib/data/products";
 import { Reveal, TextReveal, EASE } from "@/components/ui/motion";
 import { ArrowRight } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
-/* Four tiles on a deliberately uneven baseline — two drop, two sit high,
-   so the row scans as a spread rather than a grid of boxes. */
+/* A curated eight rather than all thirteen — the home page introduces the
+   range, the category pages carry it. Tiles sit on an uneven baseline so
+   the rows scan as a spread rather than a grid of boxes. */
+
+const FEATURED: CategorySlug[] = [
+  "chains",
+  "jumukkas",
+  "earrings",
+  "necklace",
+  "cuff-bangles",
+  "bangles",
+  "anklets",
+  "chokers",
+];
 
 const LAYOUT = [
   "lg:col-span-3 lg:mt-0",
@@ -20,6 +33,14 @@ const LAYOUT = [
 ];
 
 const RATIO = ["aspect-[3/4]", "aspect-[4/5]", "aspect-[3/4]", "aspect-[4/5]"];
+
+/* layout arrays are shorter than the tile list, so they cycle */
+const layoutAt = (i: number) => LAYOUT[i % LAYOUT.length];
+const ratioAt = (i: number) => RATIO[i % RATIO.length];
+
+const tiles = FEATURED.map((slug) => categories.find((c) => c.slug === slug)).filter(
+  (c): c is Category => Boolean(c),
+);
 
 export function Categories() {
   return (
@@ -39,24 +60,24 @@ export function Categories() {
           </div>
           <Reveal delay={0.1}>
             <p className="max-w-xs text-[13.5px] leading-relaxed opacity-55">
-              Twenty-four pieces across four disciplines, all made and finished within ten minutes
-              of the salon.
+              Forty-two pieces across two lines — steel you can swim in, and temple gold made the
+              way Thrissur has always made it.
             </p>
           </Reveal>
         </div>
 
         <div className="mt-14 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-12">
-          {categories.map((category, i) => (
+          {tiles.map((category, i) => (
             <motion.div
               key={category.slug}
-              className={cn(LAYOUT[i])}
+              className={cn(layoutAt(i))}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.95, delay: i * 0.08, ease: EASE }}
             >
-              <Link href={`/shop?category=${category.slug}`} className="group block">
-                <div className={cn("relative overflow-hidden bg-sand", RATIO[i])}>
+              <Link href={`/category/${category.slug}`} className="group block">
+                <div className={cn("relative overflow-hidden bg-sand", ratioAt(i))}>
                   <Image
                     src={category.image}
                     alt={category.name}

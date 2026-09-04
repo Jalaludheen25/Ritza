@@ -14,12 +14,12 @@ import { cn } from "@/lib/utils";
    the right-hand one dropped a step so the block never resolves into a
    straight line. Curated by slug so the lead is always worth enlarging. */
 
-const LEAD = "noor-riviere-necklace";
+const LEAD = "kasu-mala-necklace";
 const SUPPORT = [
-  "dune-hoop-earrings",
-  "dune-curb-chain",
-  "noor-solitaire-studs",
-  "dune-link-bracelet",
+  "malabar-jumukka",
+  "aria-fine-chain",
+  "halo-everyday-hoops",
+  "vega-sculpted-cuff",
 ];
 
 export function BestSellers() {

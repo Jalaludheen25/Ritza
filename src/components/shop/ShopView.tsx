@@ -3,14 +3,14 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import type { Product } from "@/lib/types";
+import type { CollectionSlug, Product } from "@/lib/types";
 import { products, priceBounds } from "@/lib/data/products";
-import { collections, categories } from "@/lib/data/collections";
+import { collections, categories, categoriesFor } from "@/lib/data/collections";
 import { ProductCard } from "./ProductCard";
 import { QuickView } from "./QuickView";
 import { Button } from "@/components/ui/Button";
 import { EASE } from "@/components/ui/motion";
-import { cn, formatPrice, titleCase } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 
 type Sort = "featured" | "newest" | "price-asc" | "price-desc" | "rating";
 
@@ -22,13 +22,34 @@ const SORTS: { value: Sort; label: string }[] = [
   { value: "rating", label: "Best rated" },
 ];
 
-const METALS = ["yellow-gold", "white-gold", "rose-gold", "platinum"] as const;
-const STONES = ["Diamond", "Pearl", "Emerald", "None"];
+const FINISHES = [
+  "gold-pvd",
+  "rose-gold-pvd",
+  "silver-steel",
+  "antique-gold",
+  "temple-gold",
+  "oxidised-silver",
+] as const;
+const LINES = [
+  { slug: "all", name: "All pieces" },
+  ...collections.map((c) => ({ slug: c.slug as string, name: c.name })),
+];
+
+const FINISH_LABELS: Record<string, string> = {
+  "gold-pvd": "Gold PVD",
+  "rose-gold-pvd": "Rose Gold PVD",
+  "silver-steel": "Brushed Steel",
+  "antique-gold": "Antique Gold",
+  "temple-gold": "Temple Gold",
+  "oxidised-silver": "Oxidised Silver",
+};
+
+const STONES = ["None", "Kundan", "Pearl", "Ruby", "Emerald", "Cubic Zirconia", "Turquoise"];
 
 export type ShopFilters = {
   category: string;
   collections: string[];
-  metals: string[];
+  finishes: string[];
   stones: string[];
   max: number;
   sort: Sort;
@@ -44,7 +65,7 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
   const [f, setF] = useState<ShopFilters>({
     category: initial.category ?? "all",
     collections: initial.collections ?? [],
-    metals: initial.metals ?? [],
+    finishes: initial.finishes ?? [],
     stones: initial.stones ?? [],
     max: initial.max ?? priceBounds.max,
     sort: (initial.sort as Sort) ?? "featured",
@@ -56,7 +77,7 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
     setF((prev) => ({ ...prev, [key]: value }));
   }, []);
 
-  const toggle = useCallback((key: "collections" | "metals" | "stones", value: string) => {
+  const toggle = useCallback((key: "collections" | "finishes" | "stones", value: string) => {
     setF((prev) => ({
       ...prev,
       [key]: prev[key].includes(value)
@@ -70,7 +91,7 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
     const p = new URLSearchParams();
     if (f.category !== "all") p.set("category", f.category);
     if (f.collections.length) p.set("collection", f.collections.join(","));
-    if (f.metals.length) p.set("metal", f.metals.join(","));
+    if (f.finishes.length) p.set("finish", f.finishes.join(","));
     if (f.stones.length) p.set("stone", f.stones.join(","));
     if (f.max < priceBounds.max) p.set("max", String(f.max));
     if (f.sort !== "featured") p.set("sort", f.sort);
@@ -85,13 +106,13 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
     let list = products.filter((p) => {
       if (f.category !== "all" && p.category !== f.category) return false;
       if (f.collections.length && !f.collections.includes(p.collection)) return false;
-      if (f.metals.length && !f.metals.includes(p.metal)) return false;
+      if (f.finishes.length && !f.finishes.includes(p.finish)) return false;
       if (f.stones.length && !f.stones.includes(p.stone)) return false;
       if (p.price > f.max) return false;
       if (f.edit === "bestsellers" && !p.badges.includes("bestseller")) return false;
       if (f.edit === "limited" && !p.badges.includes("limited")) return false;
       if (q) {
-        const hay = [p.name, p.tagline, p.description, p.collection, p.category, p.stone]
+        const hay = [p.name, p.tagline, p.description, p.collection, p.category, p.stone, p.finish]
           .join(" ")
           .toLowerCase();
         if (!hay.includes(q)) return false;
@@ -122,9 +143,15 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
     return list;
   }, [f]);
 
+  /* chips follow the line switcher — all thirteen only when no line is chosen */
+  const visibleCategories = useMemo(() => {
+    if (f.collections.length === 1) return categoriesFor(f.collections[0] as CollectionSlug);
+    return categories;
+  }, [f.collections]);
+
   const activeCount =
     f.collections.length +
-    f.metals.length +
+    f.finishes.length +
     f.stones.length +
     (f.max < priceBounds.max ? 1 : 0) +
     (f.edit ? 1 : 0);
@@ -133,7 +160,7 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
     setF({
       category: "all",
       collections: [],
-      metals: [],
+      finishes: [],
       stones: [],
       max: priceBounds.max,
       sort: "featured",
@@ -143,27 +170,57 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
 
   return (
     <>
-      {/* category strip */}
+      {/* line switcher + category chips */}
       <div className="shell">
-        <div className="hide-scrollbar -mx-5 flex gap-7 overflow-x-auto px-5 md:mx-0 md:px-0">
-          {[{ slug: "all", name: "All pieces" }, ...categories].map((c) => (
+        <div className="hide-scrollbar -mx-5 flex gap-8 overflow-x-auto px-5 md:mx-0 md:px-0">
+          {LINES.map((line) => {
+            const active =
+              line.slug === "all"
+                ? f.collections.length === 0
+                : f.collections.length === 1 && f.collections[0] === line.slug;
+            return (
+              <button
+                key={line.slug}
+                type="button"
+                onClick={() => {
+                  setF((prev) => ({
+                    ...prev,
+                    collections: line.slug === "all" ? [] : [line.slug],
+                    category: "all",
+                  }));
+                }}
+                className={cn(
+                  "display relative shrink-0 pb-3 text-[1.5rem] transition-colors duration-500 md:text-[2rem]",
+                  active ? "text-ink" : "text-ink/30 hover:text-ink/60",
+                )}
+              >
+                {line.name}
+                {active && (
+                  <motion.span
+                    layoutId="line-underline"
+                    className="absolute inset-x-0 bottom-0 h-px bg-gold"
+                    transition={{ duration: 0.5, ease: EASE }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="hide-scrollbar -mx-5 mt-6 flex gap-2 overflow-x-auto px-5 md:mx-0 md:flex-wrap md:px-0">
+          {[{ slug: "all", name: "Everything" }, ...visibleCategories].map((c) => (
             <button
               key={c.slug}
               type="button"
               onClick={() => set("category", c.slug)}
               className={cn(
-                "display relative shrink-0 pb-3 text-[1.6rem] transition-colors duration-500 md:text-[2rem]",
-                f.category === c.slug ? "text-ink" : "text-ink/30 hover:text-ink/60",
+                "eyebrow shrink-0 border px-3.5 py-2.5 text-[9px] transition-colors duration-300",
+                f.category === c.slug
+                  ? "border-ink bg-ink text-ivory"
+                  : "border-ink/15 hover:border-ink/45",
               )}
             >
               {c.name}
-              {f.category === c.slug && (
-                <motion.span
-                  layoutId="cat-underline"
-                  className="absolute inset-x-0 bottom-0 h-px bg-gold"
-                  transition={{ duration: 0.5, ease: EASE }}
-                />
-              )}
             </button>
           ))}
         </div>
@@ -248,13 +305,13 @@ export function ShopView({ initial }: { initial: Partial<ShopFilters> }) {
                   ))}
                 </FilterGroup>
 
-                <FilterGroup title="Metal">
-                  {METALS.map((m) => (
+                <FilterGroup title="Finish">
+                  {FINISHES.map((m) => (
                     <Check
                       key={m}
-                      label={titleCase(m)}
-                      checked={f.metals.includes(m)}
-                      onChange={() => toggle("metals", m)}
+                      label={FINISH_LABELS[m] ?? m}
+                      checked={f.finishes.includes(m)}
+                      onChange={() => toggle("finishes", m)}
                     />
                   ))}
                 </FilterGroup>

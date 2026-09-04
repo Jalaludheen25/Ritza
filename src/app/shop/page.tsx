@@ -5,7 +5,7 @@ import { Reveal, TextReveal } from "@/components/ui/motion";
 export const metadata: Metadata = {
   title: "Shop",
   description:
-    "Twenty-four pieces in 18k gold, certified diamonds and Gulf pearls — filter by collection, metal, stone and price.",
+    "Forty pieces across Ritza Anti-Tarnish and Kerala Traditional — filter by category, collection, finish, stone and price.",
 };
 
 const list = (v: string | string[] | undefined) =>
@@ -22,7 +22,7 @@ export default async function ShopPage({
   const initial: Partial<ShopFilters> = {
     category: one(sp.category) ?? "all",
     collections: list(sp.collection),
-    metals: list(sp.metal),
+    finishes: list(sp.finish ?? sp.metal),
     stones: list(sp.stone),
     max: sp.max ? Number(one(sp.max)) : undefined,
     sort: one(sp.sort) as ShopFilters["sort"] | undefined,
@@ -40,16 +40,16 @@ export default async function ShopPage({
           </div>
         </Reveal>
         <h1 className="display mt-6 max-w-4xl text-[clamp(2.5rem,1.5rem+4.4vw,5.5rem)]">
-          <TextReveal text="Twenty-four pieces," />
+          <TextReveal text="Forty-two pieces," />
           <br />
           <em className="font-normal italic">
-            <TextReveal text="none of them in a hurry" delay={0.1} />
+            <TextReveal text="two ways to wear them" delay={0.1} />
           </em>
         </h1>
         <Reveal delay={0.15}>
           <p className="lede mt-8 max-w-md">
-            Everything the house currently makes. Sized, engraved and finished in Al Quoz before it
-            leaves us.
+            Everything Ritza makes, across both lines. Start with a line, narrow by category, or
+            filter on finish, stone and price.
           </p>
         </Reveal>
       </div>

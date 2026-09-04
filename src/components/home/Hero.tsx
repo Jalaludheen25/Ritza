@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ButtonLink, ArrowRight } from "@/components/ui/Button";
 import { EASE } from "@/components/ui/motion";
-import { getProduct } from "@/lib/data/products";
+import { getProduct, products } from "@/lib/data/products";
 import { formatPrice } from "@/lib/utils";
 
 /* Full-bleed opening frame. The picture settles out of a slow over-scale
@@ -23,7 +23,7 @@ export function Hero() {
   const copyY = useTransform(scrollYProgress, [0, 1], [0, 110]);
   const copyOpacity = useTransform(scrollYProgress, [0, 0.65], [1, 0]);
 
-  const featured = getProduct("lulua-pearl-strand")!;
+  const featured = getProduct("vega-sculpted-cuff")!;
 
   return (
     <section ref={ref} className="relative h-[100svh] min-h-[620px] overflow-hidden bg-ink">
@@ -38,20 +38,20 @@ export function Hero() {
           transition={{ duration: 2.2, ease: EASE, delay: 0.15 }}
         >
           <Image
-            src="/images/model-gold-bokeh.jpg"
-            alt="A model wearing layered Ritza gold against evening light"
+            src="/images/kt-bride-kasavu.jpg"
+            alt="A bride in a Kerala kasavu saree wearing temple gold"
             fill
             priority
             quality={88}
             sizes="100vw"
-            className="object-cover object-[58%_center]"
+            className="object-cover object-[62%_center]"
           />
         </motion.div>
       </motion.div>
 
       {/* grading */}
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/45" />
-      <div className="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/88 via-ink/30 to-ink/45" />
+      <div className="absolute inset-0 bg-gradient-to-r from-ink/70 via-ink/10 to-transparent" />
 
       <motion.div
         className="shell relative flex h-full flex-col justify-end pb-16 md:pb-20"
@@ -65,11 +65,11 @@ export function Hero() {
             transition={{ delay: 0.55, duration: 1 }}
           >
             <span className="h-px w-10 bg-gold" />
-            <span className="eyebrow text-gold-2">Lulua — Gulf pearls</span>
+            <span className="eyebrow text-gold-2">Kerala Traditional</span>
           </motion.div>
 
           <h1 className="display text-ivory text-[clamp(2.75rem,1.4rem+6.6vw,7.5rem)]">
-            {["Light, held", "at the throat"].map((line, i) => (
+            {["The old forms,", "made the long way"].map((line, i) => (
               <span key={line} className="block overflow-hidden pb-[0.06em]">
                 <motion.span
                   className="block"
@@ -79,7 +79,7 @@ export function Hero() {
                 >
                   {i === 1 ? (
                     <>
-                      at the <em className="font-normal italic">throat</em>
+                      made the <em className="font-normal italic">long way</em>
                     </>
                   ) : (
                     line
@@ -95,8 +95,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.85, duration: 1.1, ease: EASE }}
           >
-            South Sea pearls graded by hand and knotted on silk, one at a time, in the city that
-            once lived on them. Finished in our Al Quoz atelier.
+            Kasu mala, nagapadam and jumukka — cast, chased and stone-set by hand in Thrissur, in the
+            patterns Kerala goldsmiths have worked for three centuries. Delivered across the UAE.
           </motion.p>
 
           <motion.div
@@ -105,11 +105,11 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 1.1, ease: EASE }}
           >
-            <ButtonLink href="/collections/lulua" variant="ivory" size="lg">
-              Discover Lulua
+            <ButtonLink href="/collections/kerala-traditional" variant="ivory" size="lg">
+              Kerala Traditional
             </ButtonLink>
-            <ButtonLink href="/shop" variant="outline-light" size="lg">
-              Shop all pieces
+            <ButtonLink href="/collections/anti-tarnish" variant="outline-light" size="lg">
+              Anti-Tarnish
             </ButtonLink>
           </motion.div>
         </div>
@@ -127,7 +127,7 @@ export function Hero() {
           >
             <div className="relative h-24 w-20 shrink-0 overflow-hidden">
               <Image
-                src={featured.images[1]}
+                src={featured.images[1] ?? featured.images[0]}
                 alt={featured.name}
                 fill
                 sizes="80px"

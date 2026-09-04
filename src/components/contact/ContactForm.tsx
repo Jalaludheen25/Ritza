@@ -7,9 +7,9 @@ import { EASE } from "@/components/ui/motion";
 import { cn } from "@/lib/utils";
 
 const SUBJECTS = [
-  "An appointment at the salon",
+  "Visiting the Meena Bazaar counter",
   "A piece I am considering",
-  "A commission",
+  "A custom Kerala commission",
   "Sizing or alteration",
   "Repair and care",
   "An existing order",
@@ -65,7 +65,7 @@ export function ContactForm() {
               Thank you, {form.name.split(" ")[0]}
             </p>
             <p className="lede mx-auto mt-4 max-w-sm text-[14px]">
-              Somebody from the atelier will write back within one working day. If it is urgent,
+              Somebody from the workshop will write back within one working day. If it is urgent,
               call us — we answer the phone.
             </p>
             <Button

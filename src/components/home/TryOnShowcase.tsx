@@ -97,7 +97,7 @@ export function TryOnShowcase() {
               />
             </div>
             <p className="eyebrow mt-4 text-[9px] text-ivory/35">
-              Drag to compare — Noor Emerald-Cut Pendant
+              Drag to compare — Kasu Mala Necklace
             </p>
           </Reveal>
 
@@ -141,7 +141,7 @@ export function TryOnShowcase() {
             </ol>
 
             <Reveal delay={0.45} className="mt-11">
-              <ButtonLink href="/product/noor-emerald-cut-pendant?tryon=1" variant="ivory">
+              <ButtonLink href="/product/kasu-mala-necklace?tryon=1" variant="ivory">
                 Try this piece on
               </ButtonLink>
               <p className="eyebrow mt-5 text-[9px] text-ivory/30">

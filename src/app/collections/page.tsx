@@ -5,7 +5,7 @@ import { Reveal, TextReveal } from "@/components/ui/motion";
 export const metadata: Metadata = {
   title: "Collections",
   description:
-    "Five collections — Noor, Dune, Lulua, Mirage and Vow — each with its own reason for existing.",
+    "Two lines — Ritza Anti-Tarnish and Kerala Traditional — each with its own reason for existing.",
 };
 
 export default function CollectionsPage() {
@@ -15,7 +15,7 @@ export default function CollectionsPage() {
         <Reveal>
           <div className="flex items-center gap-3">
             <span className="h-px w-8 bg-gold-3/60" />
-            <span className="eyebrow text-gold-3">Five collections</span>
+            <span className="eyebrow text-gold-3">Two lines</span>
           </div>
         </Reveal>
         <h1 className="display mt-6 max-w-4xl text-[clamp(2.5rem,1.5rem+4.4vw,5.5rem)]">
@@ -27,8 +27,8 @@ export default function CollectionsPage() {
         </h1>
         <Reveal delay={0.15}>
           <p className="lede mt-8 max-w-lg">
-            We do not launch a collection to fill a season. Each of these began as a question
-            somebody in the atelier could not stop asking.
+            Two lines that do not pretend to be each other. One is ceremonial and made the slow
+            way; the other you can wear in the sea.
           </p>
         </Reveal>
       </div>

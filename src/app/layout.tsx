@@ -31,15 +31,15 @@ const sans = Jost({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ritza.ae"),
   title: {
-    default: "Ritza — Fine Jewellery, Dubai",
+    default: "Ritza — Anti-Tarnish & Kerala Traditional Jewellery, Dubai",
     template: "%s — Ritza",
   },
   description:
-    "A Dubai jewellery house working in 18k gold, certified diamonds and Gulf pearls. Every piece finished by hand in our Al Quoz atelier.",
+    "Two lines from one Dubai workshop — 316L anti-tarnish steel you can swim in, and Kerala temple jewellery cast in Thrissur.",
   openGraph: {
-    title: "Ritza — Fine Jewellery, Dubai",
+    title: "Ritza — Anti-Tarnish & Kerala Traditional Jewellery, Dubai",
     description:
-      "18k gold, certified diamonds and Gulf pearls, finished by hand in Dubai.",
+      "Anti-tarnish steel and Kerala temple jewellery, delivered across the UAE.",
     type: "website",
     locale: "en_AE",
   },

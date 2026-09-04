@@ -15,8 +15,8 @@ import Link from "next/link";
    still that overlaps it, with the copy sitting off the optical centre. */
 
 export function FeaturedCollection() {
-  const collection = getCollection("noor")!;
-  const pieces = byCollection("noor").slice(0, 2);
+  const collection = getCollection("anti-tarnish")!;
+  const pieces = byCollection("anti-tarnish").slice(0, 2);
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
 

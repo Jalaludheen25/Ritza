@@ -3,12 +3,13 @@
 import { Marquee } from "@/components/ui/motion";
 
 const CLAIMS = [
-  "18k gold, never plated",
-  "GIA certified stones",
-  "Hand-finished in Al Quoz",
-  "Complimentary sizing for life",
-  "Insured worldwide delivery",
-  "Gulf pearls, knotted on silk",
+  "316L steel, 18k gold PVD",
+  "Two-year anti-tarnish promise",
+  "Temple gold, cast in Thrissur",
+  "Free delivery over AED 200",
+  "Same day across Dubai",
+  "Free sizing and restringing",
+  "Thirty-day returns",
 ];
 
 export function HouseStrip() {

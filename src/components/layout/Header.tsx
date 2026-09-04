@@ -7,7 +7,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-
 import { Wordmark } from "@/components/ui/Logo";
 import { EASE } from "@/components/ui/motion";
 import { useHeaderTone, useStore } from "@/lib/store";
-import { collections, categories } from "@/lib/data/collections";
+import { collections, categoriesFor } from "@/lib/data/collections";
 import { products } from "@/lib/data/products";
 import { cn, formatPrice } from "@/lib/utils";
 import Image from "next/image";
@@ -65,11 +65,11 @@ export function Header() {
             >
               <div className="shell flex h-[34px] items-center justify-center gap-6">
                 <p className="eyebrow text-[9px] text-ivory/75">
-                  Complimentary insured delivery across the GCC
+                  Free delivery over AED 200 — same day in Dubai
                 </p>
                 <span className="hidden h-3 w-px bg-ivory/20 sm:block" />
                 <p className="eyebrow hidden text-[9px] text-ivory/75 sm:block">
-                  Atelier appointments — Alserkal Avenue
+                  Two-year anti-tarnish promise
                 </p>
               </div>
             </motion.div>
@@ -186,8 +186,8 @@ function MegaMenu({
   open: "shop" | "collections" | null;
   onClose: () => void;
 }) {
-  const featured = products.find((p) => p.slug === "noor-riviere-necklace")!;
-  const secondary = products.find((p) => p.slug === "dune-hoop-earrings")!;
+  const featured = products.find((p) => p.slug === "vega-sculpted-cuff") ?? products[0];
+  const secondary = products.find((p) => p.slug === "halo-everyday-hoops") ?? products[1];
 
   return (
     <AnimatePresence>
@@ -203,31 +203,39 @@ function MegaMenu({
           <div className="shell grid grid-cols-12 gap-10 py-12">
             {open === "shop" ? (
               <>
-                <div className="col-span-3">
-                  <p className="eyebrow mb-6 text-gold-3">By category</p>
-                  <ul className="space-y-3.5">
-                    {categories.map((c) => (
-                      <li key={c.slug}>
-                        <Link
-                          href={`/shop?category=${c.slug}`}
-                          onClick={onClose}
-                          className="display link-line text-2xl transition-opacity hover:opacity-60"
-                        >
-                          {c.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="col-span-3">
+                {collections.map((line) => (
+                  <div key={line.slug} className="col-span-3">
+                    <Link
+                      href={`/collections/${line.slug}`}
+                      onClick={onClose}
+                      className="eyebrow link-line mb-6 block text-gold-3"
+                    >
+                      {line.name}
+                    </Link>
+                    <ul className="space-y-2.5">
+                      {categoriesFor(line.slug).map((c) => (
+                        <li key={`${line.slug}-${c.slug}`}>
+                          <Link
+                            href={`/category/${c.slug}`}
+                            onClick={onClose}
+                            className="link-line text-[14px] opacity-75 transition-opacity hover:opacity-100"
+                          >
+                            {c.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                <div className="col-span-2">
                   <p className="eyebrow mb-6 text-gold-3">Edits</p>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5">
                     {[
                       { label: "New arrivals", href: "/shop?sort=newest" },
                       { label: "Best sellers", href: "/shop?edit=bestsellers" },
                       { label: "Limited editions", href: "/shop?edit=limited" },
-                      { label: "Under AED 6,000", href: "/shop?max=6000" },
-                      { label: "Bridal", href: "/collections/vow" },
+                      { label: "Under AED 300", href: "/shop?max=300" },
+                      { label: "Bridal", href: "/shop?edit=limited&collection=kerala-traditional" },
                       { label: "Everything", href: "/shop" },
                     ].map((l) => (
                       <li key={l.href}>
@@ -242,8 +250,8 @@ function MegaMenu({
                     ))}
                   </ul>
                 </div>
-                <MenuFeature product={featured} label="The house signature" onClose={onClose} />
-                <MenuFeature product={secondary} label="Most worn" onClose={onClose} />
+                <MenuFeature product={featured} label="Most worn" onClose={onClose} />
+                <MenuFeature product={secondary} label="Everyday" onClose={onClose} />
               </>
             ) : (
               <>
@@ -304,7 +312,7 @@ function MenuFeature({
   onClose: () => void;
 }) {
   return (
-    <Link href={`/product/${product.slug}`} onClick={onClose} className="group col-span-3 block">
+    <Link href={`/product/${product.slug}`} onClick={onClose} className="group col-span-2 block">
       <div className="relative aspect-[4/5] overflow-hidden bg-sand">
         <Image
           src={product.images[0]}

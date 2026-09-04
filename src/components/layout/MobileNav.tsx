@@ -84,7 +84,7 @@ export function MobileNav() {
                   {categories.map((c) => (
                     <Link
                       key={c.slug}
-                      href={`/shop?category=${c.slug}`}
+                      href={`/category/${c.slug}`}
                       onClick={() => setNavOpen(false)}
                       className="group relative aspect-[4/3] overflow-hidden bg-sand"
                     >

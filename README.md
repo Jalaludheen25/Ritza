@@ -1,8 +1,8 @@
-# Ritza — fine jewellery, Dubai
+# Ritza — anti-tarnish & Kerala traditional jewellery, Dubai
 
-A front-end prototype for a Dubai jewellery house, built for client review. Eleven pages, a
-twenty-five piece catalogue, a working bag and checkout, and a front-end demonstration of the
-AI Try-On.
+A front-end prototype for a Dubai jewellery retailer with two product lines, built for client
+review. Sixteen page types, a forty-two piece catalogue across thirteen categories, a working bag
+and checkout, and a front-end demonstration of the Virtual Try-On.
 
 Everything runs on mock data in the browser. There is no backend, no database, no payment
 processor and no AI service.
@@ -21,7 +21,7 @@ npm run build      # production build
 npm run start      # serve the production build
 ```
 
-Node 20+ is required. The build prerenders 43 routes, including every product and collection page.
+Node 20+ is required. The build prerenders 76 routes, including every product, category and line page.
 
 ---
 
@@ -69,40 +69,56 @@ tracking and uppercasing, since neither works on a connected script.
 
 ---
 
+## Product lines
+
+| Line | Categories |
+| --- | --- |
+| **Ritza Anti-Tarnish** | Cuff Bangles, Chains, Earrings, Anklets |
+| **Kerala Traditional** | Earrings, Jumukkas, Nose Pins, Necklace, Chokers, Long Haaram, Ear Cuff, Bugatti, Bangles, Hip Chains, Anklets |
+
+Category and line are separate axes, so Earrings and Anklets belong to both lines without being
+duplicated. Thirteen unique categories, forty-two pieces, prices in AED.
+
 ## Pages
 
 | Route | What it is |
 | --- | --- |
-| `/` | Cinematic hero, featured collection, new arrivals rail, categories, best sellers, brand story, complete-the-look, AI try-on showcase, services, newsletter |
-| `/shop` | Filterable grid — category, collection, metal, stone, price, edits, search, five sorts. Filters sync to the URL |
-| `/collections` | Hover index where the cover trails the cursor; cards on touch |
-| `/collections/[slug]` | Collection hero, story, parallax break, pieces, onward links |
-| `/product/[slug]` | Zoomable gallery, specification, engraving, try-on, complete-your-look, reviews, related, recently viewed |
-| `/cart` | Bag with quantities, engraving notes, promotion codes, delivery threshold |
+| `/` | Hero, featured line, new arrivals rail, categories, best sellers, brand story, complete-the-look, Try-On showcase, services, newsletter |
+| `/shop` | Line switcher, category chips, and filters for collection, finish, stone, price and edits, with search and five sorts. Filters sync to the URL |
+| `/category/[slug]` | Dedicated page per category — header, grid, sibling categories, parent lines |
+| `/collections` | Index of the two lines |
+| `/collections/[slug]` | Line hero, story, parallax break, pieces, onward links |
+| `/product/[slug]` | Zoomable gallery, specification, try-on, complete-your-look, reviews, scored recommendations, recently viewed |
+| `/cart` | Bag with quantities, promotion codes, free-delivery threshold |
 | `/checkout` | Four steps — contact, delivery, payment, review — with validation and a confirmation screen |
 | `/wishlist` | Saved pieces, move to bag |
-| `/login` | Sign in / create account, split with campaign imagery |
+| `/login` | Sign in / create account |
 | `/account` | Orders, wishlist, details, addresses |
-| `/about` | House story, principles, nine-year timeline, journal |
-| `/contact` | Form, salon and atelier details, services, FAQ, sizing table |
+| `/about` | House story, principles, timeline, journal |
+| `/contact` | Form, store and workshop details, FAQ link |
+| `/faq` | Anti-tarnish and plating explained, bangle and chain sizing tables, what is included |
+| `/shipping-returns` | Delivery, returns, exclusions, the two-year promise |
+| `/privacy`, `/terms` | Policy pages on a shared layout |
 
 ---
 
-## AI Try-On (front-end demonstration)
+## Virtual Try-On (front-end demonstration)
 
-`Product → Try It On → upload a photograph → render → adjust → add to bag.`
+`Product → Try It On → upload a photograph → render → adjust → before/after → add to bag.`
 
-The render is not a mock-up of a mock-up: the piece really is composited onto the guest's
-photograph. Each try-on plate is a jewellery frame shot on a true-black studio ground, cropped and
-passed through a smooth luma gate (`scripts/build-tryon.mjs`) so the surrounding grey falls to pure
-black. The browser then drops it on with `mix-blend-mode: screen`, which leaves only metal and
-stones visible. The guest can drag to reposition, scale against the piece's true size, and rotate.
+The render is a real composite, not a canned image. Each try-on plate is a jewellery frame shot on
+a true-black studio ground, cropped and passed through a smooth luma gate
+(`scripts/build-tryon.mjs`) so the surrounding grey falls to pure black. The browser drops it onto
+the guest's photograph with `mix-blend-mode: screen`, leaving only metal and stones visible. The
+guest can drag to reposition, scale against the piece's true size, rotate, and toggle Compare to
+see the photograph without it.
 
 The staged "Reading the photograph → Finding the neckline → …" sequence is a timed animation. **No
 network request is made and the photograph never leaves the browser** — it is held as an object URL
 and revoked on close. The interface says so, in the modal and on the home page.
 
-Seven plates cover every category (`public/tryon/`), mapped per product via `product.tryOn`.
+Seven plates cover neck, ear, wrist, ankle and waist positions (`public/tryon/`), mapped per
+product through `product.tryOn`. Nose pins deliberately have no try-on: no plate would be honest.
 
 ---
 
@@ -168,6 +184,7 @@ The scripts in `scripts/` are development tools, not part of the app:
 | `build-tryon-demo.mjs` | The before/after pair used by the home-page showcase |
 | `fetch-images.mjs` | Downloads the photography set |
 | `fetch-replacements.mjs` | Downloads the modest-imagery replacement set |
+| `fetch-catalogue.mjs` | Downloads the two-line catalogue photography |
 | `image-usage.mjs` | Maps every image to the file that references it |
 | `shoot.mjs` | Full-page and viewport screenshots of any route, desktop or mobile |
 | `overflow-check.mjs` | Flags horizontal overflow at 390px — how "responsive" quietly breaks |
@@ -190,6 +207,6 @@ They need Chrome at the path set in each file and the dev server running.
   maps every frame to the file that uses it if you want to re-audit.
 - **The prototype says so where it matters.** The payment step, the contact form, the account
   sign-in and the try-on each state plainly that nothing is transmitted, charged or stored.
-- **Promotion codes** `RITZA10` and `ATELIER` work in the bag, for demonstration.
+- **Promotion codes** `RITZA10` (10%) and `BAZAAR` (15%) work in the bag, for demonstration.
 - **Not built, by design:** backend, database, real payments, real authentication, a real
   try-on model, CMS, search indexing, analytics.

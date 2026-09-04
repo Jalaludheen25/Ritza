@@ -12,13 +12,13 @@ import { Button, ButtonLink } from "@/components/ui/Button";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { EASE, Reveal } from "@/components/ui/motion";
 
-export const FREE_SHIPPING = 2500;
+export const FREE_SHIPPING = 200;
 export const VAT_RATE = 0.05;
 
 /** Mock promotion codes — the checkout has no server to validate against. */
 const CODES: Record<string, { off: number; label: string }> = {
   RITZA10: { off: 0.1, label: "10% — house welcome" },
-  ATELIER: { off: 0.15, label: "15% — atelier invitation" },
+  BAZAAR: { off: 0.15, label: "15% — Meena Bazaar welcome" },
 };
 
 export function CartView() {
@@ -29,7 +29,7 @@ export function CartView() {
 
   const discount = applied ? Math.round(subtotal * applied.off) : 0;
   const afterDiscount = subtotal - discount;
-  const delivery = afterDiscount >= FREE_SHIPPING || afterDiscount === 0 ? 0 : 120;
+  const delivery = afterDiscount >= FREE_SHIPPING || afterDiscount === 0 ? 0 : 20;
   const total = afterDiscount + delivery;
   const vat = Math.round(total - total / (1 + VAT_RATE));
 
@@ -53,7 +53,7 @@ export function CartView() {
         <div className="border-y border-ink/10 py-24 text-center">
           <p className="display text-[clamp(2rem,1.4rem+2.4vw,3.5rem)]">Your bag is empty</p>
           <p className="lede mx-auto mt-5 max-w-md">
-            Nothing chosen yet. Start with the pieces that leave the atelier fastest.
+            Nothing chosen yet. Start with the pieces that leave the workshop fastest.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <ButtonLink href="/shop" variant="ink">
@@ -138,8 +138,8 @@ export function CartView() {
                               )}
                               <p>
                                 {product.inStock
-                                  ? "Ships within two working days"
-                                  : "Made to order — 7–12 working days"}
+                                  ? "In stock — dispatched today"
+                                  : "Made to order — 8–14 weeks"}
                               </p>
                             </div>
                           </div>

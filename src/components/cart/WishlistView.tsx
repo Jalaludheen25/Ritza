@@ -96,7 +96,7 @@ export function WishlistView() {
                   <p className="mt-1.5 text-[12.5px] opacity-50">{product.tagline}</p>
                   <p className="mt-3 text-[14px] tabular-nums">{formatPrice(product.price)}</p>
                   <p className="mt-1 text-[12.5px] opacity-50">
-                    {product.inStock ? "In the atelier" : "Made to order"}
+                    {product.inStock ? "In stock" : "Made to order"}
                   </p>
                 </div>
 

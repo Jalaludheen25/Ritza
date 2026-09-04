@@ -1,8 +1,40 @@
-export type CategorySlug = "rings" | "earrings" | "necklaces" | "bracelets";
-export type CollectionSlug = "noor" | "dune" | "lulua" | "mirage" | "vow";
-export type Metal = "yellow-gold" | "white-gold" | "rose-gold" | "platinum";
+export type CollectionSlug = "anti-tarnish" | "kerala-traditional";
+
+export type CategorySlug =
+  | "cuff-bangles"
+  | "chains"
+  | "earrings"
+  | "anklets"
+  | "jumukkas"
+  | "nose-pins"
+  | "necklace"
+  | "chokers"
+  | "long-haaram"
+  | "ear-cuff"
+  | "bugatti"
+  | "bangles"
+  | "hip-chains";
+
+/** Surface treatment — the axis customers actually filter on. */
+export type Finish =
+  | "gold-pvd"
+  | "rose-gold-pvd"
+  | "silver-steel"
+  | "antique-gold"
+  | "temple-gold"
+  | "oxidised-silver";
+
+export type Stone =
+  | "None"
+  | "Kundan"
+  | "Pearl"
+  | "Ruby"
+  | "Emerald"
+  | "Cubic Zirconia"
+  | "Turquoise";
+
 export type Badge = "new" | "bestseller" | "limited";
-export type TryOnAnchor = "neck" | "ear" | "hand" | "wrist";
+export type TryOnAnchor = "neck" | "ear" | "hand" | "wrist" | "ankle" | "waist" | "nose";
 
 export type Spec = { label: string; value: string };
 
@@ -29,8 +61,8 @@ export type Product = {
   images: string[];
   description: string;
   detail: string;
-  metal: Metal;
-  stone: string;
+  finish: Finish;
+  stone: Stone;
   specs: Spec[];
   badges: Badge[];
   rating: number;
@@ -44,9 +76,8 @@ export type Product = {
 export type Collection = {
   slug: CollectionSlug;
   name: string;
-  /** Arabic gloss, typeset separately from the English meaning. */
-  arabic?: string;
   meaning: string;
+  arabic?: string;
   tagline: string;
   description: string;
   story: string;
@@ -54,6 +85,8 @@ export type Collection = {
   portrait: string;
   still: string;
   year: string;
+  /** Categories this line is sold in, in navigation order. */
+  categories: CategorySlug[];
 };
 
 export type Category = {
@@ -61,6 +94,7 @@ export type Category = {
   name: string;
   blurb: string;
   image: string;
+  collections: CollectionSlug[];
 };
 
 export type Review = {

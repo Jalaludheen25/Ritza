@@ -14,9 +14,9 @@ import { cn, formatPrice } from "@/lib/utils";
    marker to bring its piece forward; add the set in a single action. */
 
 const LOOK = [
-  { slug: "dune-hoop-earrings", x: 60.5, y: 32, label: "On the ear" },
-  { slug: "dune-coin-pendant", x: 51, y: 66, label: "At the throat" },
-  { slug: "dune-signet-ring", x: 61.5, y: 76, label: "On the hand" },
+  { slug: "malabar-jumukka", x: 68, y: 41, label: "On the ear" },
+  { slug: "attiyal-gold-choker", x: 58, y: 54, label: "At the throat" },
+  { slug: "palakka-ornate-bangle", x: 19, y: 80, label: "On the wrist" },
 ];
 
 export function CompleteLook() {
@@ -31,13 +31,13 @@ export function CompleteLook() {
       <div className="shell">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
           {/* the look */}
-          <Reveal className="lg:col-span-7" y={36}>
-            <div className="relative aspect-[3/2] w-full overflow-hidden bg-ink-2">
+          <Reveal className="lg:col-span-5" y={36}>
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink-2">
               <Image
-                src="/images/model-gold-necklace-black.jpg"
-                alt="A complete Dune look — hoops, coin pendant and signet"
+                src="/images/kt-choker-bride.jpg"
+                alt="A complete Kerala Traditional look — jumukka, attiyal choker and palakka kada"
                 fill
-                sizes="(max-width: 1024px) 100vw, 58vw"
+                sizes="(max-width: 1024px) 100vw, 42vw"
                 className="object-cover"
               />
 
@@ -113,7 +113,7 @@ export function CompleteLook() {
           </Reveal>
 
           {/* the set */}
-          <div className="flex flex-col justify-center lg:col-span-5">
+          <div className="flex flex-col justify-center lg:col-span-6 lg:col-start-7">
             <Reveal>
               <div className="flex items-center gap-3">
                 <span className="h-px w-8 bg-gold-3/60" />
@@ -122,13 +122,13 @@ export function CompleteLook() {
             </Reveal>
 
             <h2 className="display mt-6 text-[clamp(2rem,1.3rem+3vw,3.5rem)]">
-              <TextReveal text="The Dune set, worn together" />
+              <TextReveal text="The bridal set, worn together" />
             </h2>
 
             <Reveal delay={0.12}>
               <p className="lede mt-6">
-                Three pieces in the same brushed 18k, finished in the same direction so they catch
-                the light as one. Bought together or one at a time.
+                Three pieces in the same temple finish, cast from dies cut by the same hand in
+                Thrissur. Bought together or one at a time.
               </p>
             </Reveal>
 
@@ -183,7 +183,7 @@ export function CompleteLook() {
                 >
                   Add all three
                 </Button>
-                <TextLink href="/collections/dune">See the collection</TextLink>
+                <TextLink href="/collections/kerala-traditional">See the collection</TextLink>
               </div>
             </Reveal>
           </div>

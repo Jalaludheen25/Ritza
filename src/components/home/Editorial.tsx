@@ -11,10 +11,10 @@ import { pressQuotes } from "@/lib/data/site";
    speeds either side of the copy, then the press line running underneath. */
 
 const FIGURES = [
-  { value: "2016", label: "Founded in Dubai" },
-  { value: "18k", label: "Gold, never plated" },
-  { value: "11", label: "Hands in the atelier" },
-  { value: "100%", label: "Finished by hand" },
+  { value: "2019", label: "Trading in Dubai" },
+  { value: "316L", label: "Surgical steel, not brass" },
+  { value: "2.5μ", label: "Gold PVD, not a flash" },
+  { value: "42", label: "Pieces, two lines" },
 ];
 
 export function Editorial() {
@@ -41,8 +41,8 @@ export function Editorial() {
                 transition={{ duration: 1.8, ease: EASE }}
               >
                 <Image
-                  src="/images/gold-jewels-plate.jpg"
-                  alt="Gold pieces laid out in the atelier"
+                  src="/images/kt-jhumka-box.jpg"
+                  alt="Kerala gold laid out in the workshop"
                   fill
                   sizes="(max-width: 1024px) 100vw, 30vw"
                   className="object-cover"
@@ -60,28 +60,28 @@ export function Editorial() {
             </Reveal>
 
             <h2 className="display mt-6 text-[clamp(2.25rem,1.4rem+3.4vw,4rem)]">
-              <TextReveal text="Made where it is sold" />
+              <TextReveal text="Two lines, one workshop" />
             </h2>
 
             <Reveal delay={0.12}>
               <p className="lede mt-8 text-ivory/60">
-                Ritza opened in 2016 with one bench and a stubborn idea: that a Dubai house could
-                hold itself to Geneva&apos;s standards without pretending to be Swiss. Everything we
-                sell is cast, set and finished in Al Quoz, eleven minutes from the salon floor.
+                Ritza began in 2019 as one counter in Meena Bazaar, selling Kerala temple jewellery
+                to a community that otherwise waited for a trip home. We now work directly with two
+                goldsmith families in Thrissur, and everything is finished in Al Quoz.
               </p>
               <p className="lede mt-5 text-ivory/60">
-                We do not run seasons. A piece enters the collection when it is right, and leaves
-                when we can no longer make it as well as we did the first time.
+                The second line exists because of one complaint we heard every August — it turned my
+                skin green. So we stopped plating brass and moved to solid steel under a PVD bond.
               </p>
             </Reveal>
 
             <Reveal delay={0.2} className="mt-10">
               <blockquote className="border-l border-gold/40 pl-6">
                 <p className="display text-2xl leading-snug text-ivory/90 italic md:text-[1.75rem]">
-                  “If you cannot see the hand in it, we have not finished.”
+                  “If it cannot survive a Dubai summer, it is not jewellery.”
                 </p>
                 <footer className="eyebrow mt-4 text-[9px] text-ivory/40">
-                  Head of atelier, Al Quoz
+                  Founder, Ritza — Bur Dubai
                 </footer>
               </blockquote>
             </Reveal>
@@ -106,8 +106,8 @@ export function Editorial() {
                 transition={{ duration: 1.8, delay: 0.1, ease: EASE }}
               >
                 <Image
-                  src="/images/portrait-pearls-bw.jpg"
-                  alt="A pearl strand and drop earrings worn in profile, house campaign"
+                  src="/images/kt-choker-ornate.jpg"
+                  alt="A kundan choker photographed for the house campaign"
                   fill
                   sizes="(max-width: 1024px) 100vw, 30vw"
                   className="object-cover"
